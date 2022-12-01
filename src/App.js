@@ -1,5 +1,6 @@
 import Scores from './components/scores/Scores';
 import Ship from './components/ship/Ship';
+import Grid from './components/grid/Grid';
 
 import { shipData } from './assets/data/shipData';
 
@@ -27,7 +28,7 @@ function App() {
         </div>
       </div>
       <div className='game-grid-container'>
-        Grid
+        <Grid />
       </div>
     </div>
   )

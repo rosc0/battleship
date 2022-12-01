@@ -3,7 +3,7 @@ import missSmallImg from '../../assets/img/miss-sm.png';
 
 import { shipData } from '../../assets/data/shipData';
 
-import './Ship.style.scss';
+import './Ship.styles.scss';
 
 // TODO: replace with redux data
 const hits = 1;

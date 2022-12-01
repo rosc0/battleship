@@ -1,0 +1,45 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.grid-container {
+  padding: 1px;
+  background-color: $borderColor;
+  
+  &.player1 {
+    padding: 5px;
+    background-color: $player1Color;
+
+    @include breakpoint(sm) {
+      padding: 10px;
+    }
+  }
+
+  &.player2 {
+    padding: 10px;
+    background-color: $player2Color;
+
+    @include breakpoint(sm) {
+      padding: 10px;
+    }
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    background-color: $borderColor;
+    gap: 1px;
+
+    .grid-square {
+      aspect-ratio: 1/1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $gridSquareBgColor;
+
+      img {
+        width: 65%;
+        height: 65%;      
+      }
+    }  
+  }
+}
