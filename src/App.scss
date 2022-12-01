@@ -3,13 +3,14 @@
 
 .app-container {
   width: 100%;
-  margin: 0 auto;
+  min-width: 320px;
+  margin: 0 auto 20px auto;
   display: flex;
   flex-direction: column-reverse;
 
   @include breakpoint(md) {
     margin-top: 20px;
-    width: 90%;
+    width: 80%;
   }
 
   @include breakpoint(lg) {
@@ -22,11 +23,6 @@
 
   @include breakpoint(lg) {
     width: 65%;
-    padding-left: 20px;
-  }
-
-  @include breakpoint(xl) {
-    width: 50%;
     padding-left: 20px;
   }
 }
@@ -46,10 +42,10 @@
     flex-direction: column;
   }
 
-  @include breakpoint(xl) {
-    width: 50%;
-    flex-direction: column;
-  }
+  // @include breakpoint(xl) {
+  //   width: 50%;
+  //   flex-direction: column;
+  // }
 
   .player-score-container {    
     margin-bottom: 20px;
