@@ -1,0 +1,11 @@
+@use './_variables.scss' as variables;
+
+@mixin breakpoint($name) {
+  @if not map-has-key(variables.$breakpoints, $name) {
+    @warn "Warning: `#{$name}` is not a valid breakpoint";
+  } @else {
+    @media (min-width: map-get(variables.$breakpoints, $name)) {
+      @content;
+    }
+  }
+}
