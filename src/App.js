@@ -4,11 +4,10 @@ function App() {
   return (
     <div className='app-container'>
       <div className='game-info-container'>
-        Info
         <div className='score-container'>
           Scores
         </div>
-        <div className='ships-container'>
+        <div className='ships-container'>        
           Ships
         </div>
       </div>
