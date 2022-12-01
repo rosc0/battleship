@@ -1,6 +1,15 @@
 import Scores from './components/scores/Scores';
+import Ship from './components/ship/Ship';
+
+import { shipData } from './assets/data/shipData';
 
 import './App.scss';
+
+// TODO: replace with redux data
+const ships = [];
+for (const ship in shipData.shipTypes) {
+  ships.push(ship)
+}
 
 function App() {
   return (
@@ -9,8 +18,12 @@ function App() {
         <div className='player-score-container'>
           <Scores />
         </div>
-        <div className='ship-info-container'>        
-          Ships
+        <div className='ship-info-container'>  
+          {
+            ships.map((ship) => {
+              return <Ship key={ship} ship={ship} />
+            })
+          }      
         </div>
       </div>
       <div className='game-grid-container'>

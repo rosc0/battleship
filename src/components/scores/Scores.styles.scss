@@ -1,4 +1,5 @@
 @use '../../styles/_variables.scss' as *;
+@use '../../styles/mixins' as *;
 
 .player-scores {
   width: 100%;
@@ -8,7 +9,11 @@
   
   .player {
     flex: 1;
-    padding: 20px 30px;
+    padding: 10px 20px;
+
+    @include breakpoint(md) {
+      padding: 20px 30px;
+    }
 
     &.player1 {
       background-color: $player1Color;
@@ -19,15 +24,24 @@
     }
 
     .count {
-      font-size: 2.5rem;
+      font-size: 2rem;
+      font-weight: bold;
+
+      @include breakpoint(md) {
+        font-size: 2.5rem;
+      }
     }
   
     .player-name {
       border-top: 1px solid #444444;
       margin-top: 5px;
       padding-top: 7px;
-      font-size: 1.2rem;
+      font-size: 1rem;
       white-space: nowrap;
+
+      @include breakpoint(md) {
+        font-size: 1.2rem;
+      }
     }
   }
 
