@@ -1,6 +1,49 @@
-@use './styles/variables' as variables;
-@use './styles/mixins' as mixins;
+@use './styles/variables' as *;
+@use './styles/mixins' as *;
 
 .app-container {
   display: flex;
+  flex-direction: column-reverse;
+
+  @include breakpoint(lg) {
+    flex-direction: row;
+  }
 }
+
+.game-grid-container {
+  padding: 20px;
+  background-color: lightgreen;
+
+  @include breakpoint(lg) {
+    width: 50%;
+  }
+}
+
+.game-info-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: lightcoral;
+
+  @include breakpoint(sm) {
+    flex-direction: row;
+  }
+
+  @include breakpoint(lg) {
+    width: 50%;
+    flex-direction: column;
+  }
+
+  .score-container {
+    padding: 20px;
+    background-color: lightseagreen;
+  }
+  
+  .ships-container {
+    padding: 20px;
+    background-color: lightsteelblue;
+  }
+}
+
+
+

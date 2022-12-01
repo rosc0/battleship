@@ -3,7 +3,18 @@ import './App.scss';
 function App() {
   return (
     <div className='app-container'>
-      App
+      <div className='game-info-container'>
+        Info
+        <div className='score-container'>
+          Scores
+        </div>
+        <div className='ships-container'>
+          Ships
+        </div>
+      </div>
+      <div className='game-grid-container'>
+        Grid
+      </div>
     </div>
   )
 }
