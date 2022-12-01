@@ -1,13 +1,15 @@
+import Scores from './components/scores/Scores';
+
 import './App.scss';
 
 function App() {
   return (
     <div className='app-container'>
       <div className='game-info-container'>
-        <div className='score-container'>
-          Scores
+        <div className='player-score-container'>
+          <Scores />
         </div>
-        <div className='ships-container'>        
+        <div className='ship-info-container'>        
           Ships
         </div>
       </div>
