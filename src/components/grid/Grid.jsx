@@ -1,8 +1,12 @@
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   selectPlayer1Turn,
   incrementShipHits,
   incrementScore,
+  selectScoreToWin,
+  selectPlayer1Score,
+  setGameWon,
 } from '../../store/gameSlice';
 import {
   selectPlayer1Grid,
@@ -23,15 +27,13 @@ const Grid = () => {
   const player1Turn = useSelector(selectPlayer1Turn);
   const player1Grid = useSelector(selectPlayer1Grid);
   const player2ShipLocations = useSelector(selectPlayer2ShipLocations);
+  const scoreToWin = useSelector(selectScoreToWin);
+  const player1Score = useSelector(selectPlayer1Score);
 
   // handle the click of the square and dispatch events
   const handleClick = (square) => {
     const { x, y } = square;
-    const { hitIndex, hitShip } = checkStrikeAttempt(
-      x,
-      y,
-      player2ShipLocations
-    );
+    const { hitIndex, hitShip } = checkStrikeAttempt(x, y, player2ShipLocations);
 
     const dispatchData = {
       id: square.id,
@@ -44,11 +46,17 @@ const Grid = () => {
       // increase ship hits in info window
       dispatch(incrementShipHits(hitShip));
       // increase player points
-      dispatch(incrementScore('player1'));
+      dispatch(incrementScore('player1'));        
     } else {
       dispatch(setMiss(dispatchData));
     }
   };
+
+  useEffect(() => {
+    if (scoreToWin === player1Score) {
+      dispatch(setGameWon())
+    }
+  }, [scoreToWin, player1Score, dispatch])
 
   return (
     <div className={`grid-container ${player1Turn ? 'player1' : 'player2'}`}>
