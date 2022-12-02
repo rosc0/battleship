@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { SHIPS_ARRAY } from '../constants'
+import { SHIPS_ARRAY } from '../constants';
 
 const initialState = {
   gameStarted: false,
@@ -8,7 +8,7 @@ const initialState = {
     player1: 0,
     player2: 0,
   },
-  ships: SHIPS_ARRAY,
+  ships: SHIPS_ARRAY.map((ship) => ({ ...ship, hits: 0 })),
 };
 
 export const gameSlice = createSlice({
@@ -22,13 +22,29 @@ export const gameSlice = createSlice({
       state.player1Turn = !state.player1Turn;
     },
     incrementScore: (state, action) => {
-      const player = action.payload;
-      state.score[player]++;
+      state.score[action.payload]++;
+    },
+    incrementShipHits: (state, action) => {
+      state.ships = state.ships.map((ship) => {
+        if (ship.name === action.payload) {
+          return {
+            ...ship,
+            hits: ship.hits + 1,
+          };
+        } else {
+          return ship;
+        }
+      });
     },
   },
 });
 
-export const { startGame, togglePlayersTurn, incrementScore } = gameSlice.actions;
+export const {
+  startGame,
+  togglePlayersTurn,
+  incrementScore,
+  incrementShipHits,
+} = gameSlice.actions;
 
 export const selectPlayer1Turn = (state) => state.game.player1Turn;
 export const selectGameStarted = (state) => state.game.gameStarted;

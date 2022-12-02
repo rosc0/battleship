@@ -1,11 +1,17 @@
+/*
+//TODO: 
+- Check points after each hit to see if the player has won
+- If won, show congrats overlay and restart button
+- think what to do with GRID_HEIGHT & GRID_WIDTH, grid could be configurable?
+- placeShips - could be made to randomly place ships
+- cleanup player1 / player2, leave space for them but remove half done functionality
+- general cleanup, could probably split a few things out to make it nicer
+*/
+
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  startGame,
-  selectGameStarted,
-  selectShips,
-  incrementScore,
-  togglePlayersTurn,
-} from './store/gameSlice';
+import { startGame, selectGameStarted, selectShips } from './store/gameSlice';
+import { setGrid, setShips } from './store/gridSlice';
 
 import Scores from './components/scores/Scores';
 import Ship from './components/ship/Ship';
@@ -14,13 +20,19 @@ import Grid from './components/grid/Grid';
 import './App.scss';
 
 function App() {
+  const dispatch = useDispatch();
+
   const gameStarted = useSelector(selectGameStarted);
   const ships = useSelector(selectShips);
-  const dispatch = useDispatch();
 
   const handleStartGame = () => {
     dispatch(startGame());
-  }
+  };
+
+  useEffect(() => {
+    dispatch(setGrid('player1')); // only player1 as they are the user
+    dispatch(setShips('player2')); // only player2 as they are the enemy
+  }, [dispatch]);
 
   return (
     <div className='app-container'>
@@ -28,33 +40,14 @@ function App() {
         <div className='player-score-container'>
           <Scores />
         </div>
-        <div className='ship-info-container'>  
-          {
-            ships.map((ship) => {
-              return <Ship key={ship.name} ship={ship} />
-            })
-          } 
-
-
-          {/* testing area */}
-          {/*  */}
-          {/*  */}
-          {/*  */}
-          {/*  */}
-          <button onClick={() => dispatch(incrementScore('player1'))}>Increment P1</button>   
-          <button onClick={() => dispatch(incrementScore('player2'))}>Increment P2</button>   
-          <button onClick={() => dispatch(togglePlayersTurn())}>Toggle turn</button>   
-          {/*  */}
-          {/*  */}
-          {/*  */}
-          {/*  */}
-          {/* testing area */}
-
-
+        <div className='ship-info-container'>
+          {ships.map((ship) => {
+            return <Ship key={ship.name} ship={ship} />;
+          })}
         </div>
       </div>
       <div className='game-grid-container'>
-        { !gameStarted && (
+        {!gameStarted && (
           <div className='start-game-overlay'>
             <div>Welcome to Battleship!</div>
             <button onClick={() => handleStartGame()}>START</button>
@@ -63,7 +56,7 @@ function App() {
         <Grid />
       </div>
     </div>
-  )
+  );
 }
 
 export default App;
