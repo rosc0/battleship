@@ -1,3 +1,9 @@
+import { useSelector } from 'react-redux';
+import {
+  selectPlayer1Turn,
+} from '../../store/gameSlice';
+
+import { GRID_WIDTH, GRID_HEIGHT } from '../../constants'
 
 import hitLargeImg from '../../assets/img/hit-lg.png';
 import missLargeImg from '../../assets/img/miss-lg.png';
@@ -5,8 +11,6 @@ import missLargeImg from '../../assets/img/miss-lg.png';
 import './Grid.styles.scss';
 
 // TODO: build this on game start and store in redux
-const GRID_WIDTH = 10;
-const GRID_HEIGHT = 10;
 const grid = [];
 for (let i = 0; i < GRID_HEIGHT; i++) {
   for (let j = 0; j < GRID_WIDTH; j++) {
@@ -15,14 +19,15 @@ for (let i = 0; i < GRID_HEIGHT; i++) {
 }
 
 const Grid = () => {
+  const player1Turn = useSelector(selectPlayer1Turn);
+
   return (
-    <div className='grid-container player1'>
+    <div className={`grid-container ${player1Turn ? 'player1' : 'player2'}`}>
       <div className='grid'>
         {
           grid.map((square) => {
-            console.log('square', square[0], square[1])
             return (
-              <div className='grid-square'>
+              <div key={`${square[0]}-${square[1]}`} className='grid-square'>
                 {
                   //TODO: replace with real data
                   (

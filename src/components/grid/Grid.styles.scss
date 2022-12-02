@@ -2,25 +2,19 @@
 @use '../../styles/mixins' as *;
 
 .grid-container {
-  padding: 1px;
+  padding: 5px;
   background-color: $borderColor;
+
+  @include breakpoint(sm) {
+    padding: 10px;
+  }
   
   &.player1 {
-    padding: 5px;
     background-color: $player1Color;
-
-    @include breakpoint(sm) {
-      padding: 10px;
-    }
   }
 
   &.player2 {
-    padding: 10px;
     background-color: $player2Color;
-
-    @include breakpoint(sm) {
-      padding: 10px;
-    }
   }
 
   .grid {

@@ -20,10 +20,43 @@
 
 .game-grid-container {
   padding-left: 0;
+  position: relative;
 
   @include breakpoint(lg) {
     width: 65%;
-    padding-left: 20px;
+    margin-left: 20px;
+  }
+
+  .start-game-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background: $startOverlayBgColor;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    div {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    button {
+      padding: 25px 50px;
+      border-radius: 7px;
+      outline: none;
+      border: none;
+      font-size: 1.5rem;
+      font-weight: bold;
+      background-color: $player1Color;
+      color: $textColor;
+    }
   }
 }
 
@@ -41,11 +74,6 @@
     margin-top: 0;
     flex-direction: column;
   }
-
-  // @include breakpoint(xl) {
-  //   width: 50%;
-  //   flex-direction: column;
-  // }
 
   .player-score-container {    
     margin-bottom: 20px;
