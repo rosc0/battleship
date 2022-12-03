@@ -19,6 +19,7 @@ export const gameSlice = createSlice({
   reducers: {
     startGame: (state) => {
       state.gameStarted = true;
+      state.gameWon = false;
     },
     togglePlayersTurn: (state) => {
       state.player1Turn = !state.player1Turn;
@@ -46,7 +47,7 @@ export const gameSlice = createSlice({
       state.gameWon = true;
       state.score = initialState.score;
       state.ships = initialState.ships
-    }     
+    },  
   },
 });
 

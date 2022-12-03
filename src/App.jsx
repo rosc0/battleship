@@ -1,14 +1,20 @@
 /*
 //TODO: 
+- score should be when a boat is sunk instead of each hit
+- when gae is won, don't clear score until the user clicks restart
 - think what to do with GRID_HEIGHT & GRID_WIDTH, grid could be configurable?
-- placeShips - could be made to randomly place ships
 - cleanup player1 / player2, leave space for them but remove half done functionality
 - general cleanup, could probably split a few things out to make it nicer
 */
 
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { startGame, selectGameStarted, selectShips, selectGameWon } from './store/gameSlice';
+import {
+  startGame,
+  selectGameStarted,
+  selectShips,
+  selectGameWon,
+} from './store/gameSlice';
 import { setGrid, setShips } from './store/gridSlice';
 
 import Scores from './components/scores/Scores';
@@ -32,7 +38,7 @@ function App() {
     dispatch(setGrid('player1')); // only player1 as they are the user
     dispatch(setShips('player2')); // only player2 as they are the enemy
     dispatch(startGame());
-  }
+  };
 
   useEffect(() => {
     dispatch(setGrid('player1')); // only player1 as they are the user
@@ -54,20 +60,17 @@ function App() {
       <div className='game-grid-container'>
         {!gameStarted && (
           <div className='start-game-overlay'>
-            {
-              gameWon ? (
-                <>
-                  <div>Congratulations! You won!</div>
-                  <button onClick={() => handleRestartGame()}>PLAY AGAIN</button>                      
-                </>            
-              ) : (
-                <>
-                  <div>Welcome to Battleship!</div>
-                  <button onClick={() => handleStartGame()}>START</button>
-                </>            
-              )
-            }
-            
+            {gameWon ? (
+              <>
+                <div>Congratulations! You won!</div>
+                <button onClick={() => handleRestartGame()}>PLAY AGAIN</button>
+              </>
+            ) : (
+              <>
+                <div>Welcome to Battleship!</div>
+                <button onClick={() => handleStartGame()}>START</button>
+              </>
+            )}
           </div>
         )}
         <Grid />

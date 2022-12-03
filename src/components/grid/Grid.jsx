@@ -33,7 +33,11 @@ const Grid = () => {
   // handle the click of the square and dispatch events
   const handleClick = (square) => {
     const { x, y } = square;
-    const { hitIndex, hitShip } = checkStrikeAttempt(x, y, player2ShipLocations);
+    const { hitIndex, hitShip } = checkStrikeAttempt(
+      x,
+      y,
+      player2ShipLocations
+    );
 
     const dispatchData = {
       id: square.id,
@@ -46,7 +50,7 @@ const Grid = () => {
       // increase ship hits in info window
       dispatch(incrementShipHits(hitShip));
       // increase player points
-      dispatch(incrementScore('player1'));        
+      dispatch(incrementScore('player1'));
     } else {
       dispatch(setMiss(dispatchData));
     }
@@ -54,9 +58,9 @@ const Grid = () => {
 
   useEffect(() => {
     if (scoreToWin === player1Score) {
-      dispatch(setGameWon())
+      dispatch(setGameWon());
     }
-  }, [scoreToWin, player1Score, dispatch])
+  }, [scoreToWin, player1Score, dispatch]);
 
   return (
     <div className={`grid-container ${player1Turn ? 'player1' : 'player2'}`}>
