@@ -1,9 +1,9 @@
 export const SHIPS_ARRAY = [
-  { name: 'carrier', size: 5 },
-  { name: 'battleship', size: 4 },
-  { name: 'cruiser', size: 3 },
-  { name: 'submarine', size: 3 },
-  { name: 'destroyer', size: 2 },
+  { id: 'carrier1', name: 'carrier', size: 5 },
+  { id: 'battleship1', name: 'battleship', size: 4 },
+  { id: 'cruiser1', name: 'cruiser', size: 3 },
+  { id: 'submarine1', name: 'submarine', size: 3 },
+  { id: 'destroyer1', name: 'destroyer', size: 2 },
 ];
 
 export const GRID_WIDTH = 10;
