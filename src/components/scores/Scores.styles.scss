@@ -1,18 +1,20 @@
 @use '../../styles/_variables.scss' as *;
 @use '../../styles/mixins' as *;
 
-.player-scores {
+.player-score-container {    
+  margin-bottom: 20px;
   width: 100%;
   display: flex;
   text-align: center;
   justify-content: space-evenly;
-  
+
   .player {
     flex: 1;
     padding: 10px 20px;
 
     @include breakpoint(md) {
       padding: 20px 30px;
+      align-self: start;
     }
 
     &.player1 {
@@ -45,5 +47,5 @@
       }
     }
   }
-
+  
 }

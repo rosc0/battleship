@@ -1,0 +1,14 @@
+@use '../../styles/mixins' as *;
+
+.ship-info-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  @include breakpoint(lg) {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+}

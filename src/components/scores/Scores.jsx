@@ -11,7 +11,7 @@ const Scores = () => {
   };
 
   return (
-    <div className='player-scores'>
+    <div className='player-score-container'>
       <div className='player player1'>
         <span className='score'>{padScore(player1Score)}</span>
         <div className='player-name'>Player 1</div>

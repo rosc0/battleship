@@ -1,76 +1,38 @@
-/*
-//TODO: 
-- general cleanup, could probably split a few things out to make it nicer
-*/
-
 import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import {
-  startGame,
-  selectGameStarted,
-  selectShips,
-  selectGameWon,
-  resetScores,
-} from './store/gameSlice';
+import { useDispatch } from 'react-redux';
 import { setGrid, setShips } from './store/gridSlice';
 
 import Scores from './components/scores/Scores';
-import Ship from './components/ship/Ship';
+import Ships from './components/ships/Ships';
 import Grid from './components/grid/Grid';
+import GameOverlay from './components/gameOverlay/GameOverlay';
 
 import './App.scss';
 
 function App() {
   const dispatch = useDispatch();
 
-  const gameStarted = useSelector(selectGameStarted);
-  const gameWon = useSelector(selectGameWon);
-  const ships = useSelector(selectShips);
-
-  const handleStartGame = () => {
-    dispatch(startGame());
-  };
-
-  const handleRestartGame = () => {
-    dispatch(setGrid('player1')); // only player1 as they are the user
-    dispatch(setShips('player2')); // only player2 as they are the enemy
-    dispatch(resetScores())
-    dispatch(startGame());
-  };
-
   useEffect(() => {
-    dispatch(setGrid('player1')); // only player1 as they are the user
-    dispatch(setShips('player2')); // only player2 as they are the enemy
+    dispatch(
+      setGrid({
+        player: 'player1',
+      })
+    ); // set player1 - they are the user
+    dispatch(
+      setShips({
+        player: 'player2',
+      })
+    ); // set player2 - they are the enemy
   }, [dispatch]);
 
   return (
     <div className='app-container'>
       <div className='game-info-container'>
-        <div className='player-score-container'>
-          <Scores />
-        </div>
-        <div className='ship-info-container'>
-          {ships.map((ship) => {
-            return <Ship key={ship.id} ship={ship} />;
-          })}
-        </div>
+        <Scores />
+        <Ships />
       </div>
       <div className='game-grid-container'>
-        {!gameStarted && (
-          <div className='start-game-overlay'>
-            {gameWon ? (
-              <>
-                <div>Congratulations! You won!</div>
-                <button onClick={() => handleRestartGame()}>PLAY AGAIN</button>
-              </>
-            ) : (
-              <>
-                <div>Welcome to Battleship!</div>
-                <button onClick={() => handleStartGame()}>START</button>
-              </>
-            )}
-          </div>
-        )}
+        <GameOverlay />
         <Grid />
       </div>
     </div>

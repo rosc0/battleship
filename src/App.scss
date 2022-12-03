@@ -1,4 +1,3 @@
-@use './styles/variables' as *;
 @use './styles/mixins' as *;
 
 .app-container {
@@ -21,43 +20,11 @@
 .game-grid-container {
   padding-left: 0;
   position: relative;
-  align-self: start;
-
+  
   @include breakpoint(lg) {
     width: 65%;
     margin-left: 20px;
-  }
-
-  .start-game-overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 1;
-    background: $startOverlayBgColor;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    div {
-      font-size: 2rem;
-      font-weight: bold;
-      margin-bottom: 20px;
-      color: white;
-    }
-
-    button {
-      padding: 25px 50px;
-      border-radius: 7px;
-      outline: none;
-      border: none;
-      font-size: 1.5rem;
-      font-weight: bold;
-      background-color: $player1Color;
-      color: $textColor;
-    }
+    align-self: start;
   }
 }
 
@@ -75,24 +42,4 @@
     margin-top: 0;
     flex-direction: column;
   }
-
-  .player-score-container {    
-    margin-bottom: 20px;
-  }
-  
-  .ship-info-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-
-    @include breakpoint(lg) {
-      flex-direction: column;
-      flex-wrap: nowrap;
-      justify-content: center;
-    }
-  }
 }
-
-
-

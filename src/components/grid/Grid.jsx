@@ -47,7 +47,7 @@ const Grid = () => {
       // set hit or miss
       dispatch(setHit(dispatchData));
       // increase ship hits in info window
-      dispatch(incrementShipHits(hitShip));    
+      dispatch(incrementShipHits(hitShip));
     } else {
       dispatch(setMiss(dispatchData));
     }
@@ -55,22 +55,28 @@ const Grid = () => {
 
   useEffect(() => {
     const shipCount = ships.length;
-    const sunkShipCount = ships.filter((ship) => ship.size === ship.hits).length;
+    const sunkShipCount = ships.filter(
+      (ship) => ship.size === ship.hits
+    ).length;
 
-    dispatch(setPlayerScore({
-      player: 'player1',
-      score: sunkShipCount,
-    }));
+    dispatch(
+      setPlayerScore({
+        player: 'player1',
+        score: sunkShipCount,
+      })
+    );
 
     if (shipCount === sunkShipCount) {
       dispatch(setGameWon());
     }
-
   }, [ships, dispatch]);
 
   return (
     <div className={`grid-container ${player1Turn ? 'player1' : 'player2'}`}>
-      <div className='grid' style={{gridTemplateColumns: '1fr '.repeat(GRID_WIDTH)}}>
+      <div
+        className='grid'
+        style={{ gridTemplateColumns: '1fr '.repeat(GRID_WIDTH) }}
+      >
         {player1Grid.map((gridSquare) => {
           return (
             <GridSquare

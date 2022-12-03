@@ -44,7 +44,7 @@ export const gameSlice = createSlice({
     setGameWon: (state) => {
       state.gameStarted = false;
       state.gameWon = true;
-    },  
+    },
     resetScores: (state) => {
       state.score = initialState.score;
       state.ships = initialState.ships;

@@ -9,11 +9,16 @@ const Ship = ({ ship }) => {
   const shipSunk = ship.size === ship.hits;
 
   return (
-    <div className='ship-info'>    
+    <div className='ship-info'>
       <div className='ship'>
-        { 
-          shipSunk && <img src={hitLargeImg} border='0' alt='Ship sunk' className='sunk-cross' /> 
-        }
+        {shipSunk && (
+          <img
+            src={hitLargeImg}
+            border='0'
+            alt='Ship sunk'
+            className='sunk-cross'
+          />
+        )}
         <img src={img} border='0' alt={ship.name} />
       </div>
       <div className='hits'>

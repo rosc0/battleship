@@ -14,8 +14,10 @@ const GridSquare = ({ gridSquare, clickHandler }) => {
 
   return (
     <div className='grid-square' onClick={() => handleClick(gridSquare)}>
-      {hit && <img src={hitLargeImg} border='0' alt='Hit' />}
-      {miss && <img src={missLargeImg} border='0' alt='Miss' />}
+      {hit && <img src={hitLargeImg} border='0' draggable='false' alt='Hit' />}
+      {miss && (
+        <img src={missLargeImg} border='0' draggable='false' alt='Miss' />
+      )}
     </div>
   );
 };

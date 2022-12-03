@@ -7,8 +7,6 @@
   align-items: center;
   justify-content: center;
   background-color: $gridSquareBgColor;
-  -webkit-transition: background-color 100ms linear;
-  -ms-transition: background-color 100ms linear;
   transition: background-color 100ms linear;
 
   img {

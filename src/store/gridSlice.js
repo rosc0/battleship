@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-
 import { buildGrid, placeShips } from '../utils/grid.utils';
 
 const initialState = {
@@ -18,15 +17,15 @@ export const gridSlice = createSlice({
   initialState,
   reducers: {
     setGrid: (state, action) => {
-      const { payload } = action;
-      if (payload === 'player1' || payload === 'player2') {
-        state[payload].grid = buildGrid();
+      const { player } = action.payload;
+      if (player === 'player1' || player === 'player2') {
+        state[player].grid = buildGrid();
       }
     },
     setShips: (state, action) => {
-      const { payload } = action;
-      if (payload === 'player1' || payload === 'player2') {
-        state[payload].shipLocations = placeShips();
+      const { player } = action.payload;
+      if (player === 'player1' || player === 'player2') {
+        state[player].shipLocations = placeShips();
       }
     },
     setHit: (state, action) => {
