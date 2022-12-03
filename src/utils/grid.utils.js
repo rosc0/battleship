@@ -43,6 +43,7 @@ export const checkStrikeAttempt = (x, y, placedShips) => {
 export const placeShips = () => {
   const placedShips = [];
 
+  // pick a random square as a starting point
   const pickRandomSquare = () => {
     const x = Math.floor(Math.random() * GRID_WIDTH);
     const y = Math.floor(Math.random() * GRID_HEIGHT);

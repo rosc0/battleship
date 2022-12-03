@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { GRID_WIDTH } from '../../constants';
 import {
   selectPlayer1Turn,
   incrementShipHits,
-  incrementScore,
-  selectScoreToWin,
-  selectPlayer1Score,
+  setPlayerScore,
   setGameWon,
+  selectShips,
 } from '../../store/gameSlice';
 import {
   selectPlayer1Grid,
@@ -27,8 +27,7 @@ const Grid = () => {
   const player1Turn = useSelector(selectPlayer1Turn);
   const player1Grid = useSelector(selectPlayer1Grid);
   const player2ShipLocations = useSelector(selectPlayer2ShipLocations);
-  const scoreToWin = useSelector(selectScoreToWin);
-  const player1Score = useSelector(selectPlayer1Score);
+  const ships = useSelector(selectShips);
 
   // handle the click of the square and dispatch events
   const handleClick = (square) => {
@@ -48,23 +47,30 @@ const Grid = () => {
       // set hit or miss
       dispatch(setHit(dispatchData));
       // increase ship hits in info window
-      dispatch(incrementShipHits(hitShip));
-      // increase player points
-      dispatch(incrementScore('player1'));
+      dispatch(incrementShipHits(hitShip));    
     } else {
       dispatch(setMiss(dispatchData));
     }
   };
 
   useEffect(() => {
-    if (scoreToWin === player1Score) {
+    const shipCount = ships.length;
+    const sunkShipCount = ships.filter((ship) => ship.size === ship.hits).length;
+
+    dispatch(setPlayerScore({
+      player: 'player1',
+      score: sunkShipCount,
+    }));
+
+    if (shipCount === sunkShipCount) {
       dispatch(setGameWon());
     }
-  }, [scoreToWin, player1Score, dispatch]);
+
+  }, [ships, dispatch]);
 
   return (
     <div className={`grid-container ${player1Turn ? 'player1' : 'player2'}`}>
-      <div className='grid'>
+      <div className='grid' style={{gridTemplateColumns: '1fr '.repeat(GRID_WIDTH)}}>
         {player1Grid.map((gridSquare) => {
           return (
             <GridSquare

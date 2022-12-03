@@ -8,7 +8,6 @@ const initialState = {
   score: {
     player1: 0,
     player2: 0,
-    toWin: SHIPS_ARRAY.reduce((acc, ship) => (acc = acc + ship.size), 0)
   },
   ships: SHIPS_ARRAY.map((ship) => ({ ...ship, hits: 0 })),
 };
@@ -24,10 +23,10 @@ export const gameSlice = createSlice({
     togglePlayersTurn: (state) => {
       state.player1Turn = !state.player1Turn;
     },
-    incrementScore: (state, action) => {
-      const { payload } = action;
-      if (payload === 'player1' || payload === 'player2') {
-        state.score[payload]++;
+    setPlayerScore: (state, action) => {
+      const { player, score } = action.payload;
+      if (player === 'player1' || player === 'player2') {
+        state.score[player] = score;
       }
     },
     incrementShipHits: (state, action) => {
@@ -45,18 +44,21 @@ export const gameSlice = createSlice({
     setGameWon: (state) => {
       state.gameStarted = false;
       state.gameWon = true;
-      state.score = initialState.score;
-      state.ships = initialState.ships
     },  
+    resetScores: (state) => {
+      state.score = initialState.score;
+      state.ships = initialState.ships;
+    },
   },
 });
 
 export const {
   startGame,
   togglePlayersTurn,
-  incrementScore,
+  setPlayerScore,
   incrementShipHits,
   setGameWon,
+  resetScores,
 } = gameSlice.actions;
 
 export const selectPlayer1Turn = (state) => state.game.player1Turn;
@@ -64,7 +66,6 @@ export const selectGameStarted = (state) => state.game.gameStarted;
 export const selectPlayer1Score = (state) => state.game.score.player1;
 export const selectPlayer2Score = (state) => state.game.score.player2;
 export const selectShips = (state) => state.game.ships;
-export const selectScoreToWin = (state) => state.game.score.toWin;
 export const selectGameWon = (state) => state.game.gameWon;
 
 export default gameSlice.reducer;

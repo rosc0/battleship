@@ -1,8 +1,5 @@
 /*
 //TODO: 
-- score should be when a boat is sunk instead of each hit
-- when gae is won, don't clear score until the user clicks restart
-- think what to do with GRID_HEIGHT & GRID_WIDTH, grid could be configurable?
 - cleanup player1 / player2, leave space for them but remove half done functionality
 - general cleanup, could probably split a few things out to make it nicer
 */
@@ -14,6 +11,7 @@ import {
   selectGameStarted,
   selectShips,
   selectGameWon,
+  resetScores,
 } from './store/gameSlice';
 import { setGrid, setShips } from './store/gridSlice';
 
@@ -37,6 +35,7 @@ function App() {
   const handleRestartGame = () => {
     dispatch(setGrid('player1')); // only player1 as they are the user
     dispatch(setShips('player2')); // only player2 as they are the enemy
+    dispatch(resetScores())
     dispatch(startGame());
   };
 

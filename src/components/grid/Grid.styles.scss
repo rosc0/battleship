@@ -19,7 +19,6 @@
 
   .grid {
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
     background-color: $borderColor;
     gap: 1px;
   }
