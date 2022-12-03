@@ -1,6 +1,5 @@
 /*
 //TODO: 
-- cleanup player1 / player2, leave space for them but remove half done functionality
 - general cleanup, could probably split a few things out to make it nicer
 */
 

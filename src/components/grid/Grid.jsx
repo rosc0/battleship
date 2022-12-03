@@ -40,7 +40,7 @@ const Grid = () => {
 
     const dispatchData = {
       id: square.id,
-      player: player1Turn ? 'player1' : 'player2',
+      player: 'player1',
     };
 
     if (typeof hitIndex === 'number') {

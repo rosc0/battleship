@@ -65,8 +65,6 @@ export const gridSlice = createSlice({
 export const { setGrid, setShips, setHit, setMiss } = gridSlice.actions;
 
 export const selectPlayer1Grid = (state) => state.grid.player1.grid;
-// export const selectPlayer1ShipLocations = (state) => state.grid.player1.shipLocations;
-// export const selectPlayer2Grid = (state) => state.grid.player2.grid;
 export const selectPlayer2ShipLocations = (state) =>
   state.grid.player2.shipLocations;
 
