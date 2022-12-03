@@ -21,6 +21,7 @@
 .game-grid-container {
   padding-left: 0;
   position: relative;
+  align-self: start;
 
   @include breakpoint(lg) {
     width: 65%;

@@ -1,3 +1,4 @@
+import hitLargeImg from '../../assets/img/hit-lg.png';
 import hitSmallImg from '../../assets/img/hit-sm.png';
 import missSmallImg from '../../assets/img/miss-sm.png';
 
@@ -5,10 +6,14 @@ import './Ship.styles.scss';
 
 const Ship = ({ ship }) => {
   const img = require(`../../assets/img/ships/${ship.name}.png`);
+  const shipSunk = ship.size === ship.hits;
 
   return (
-    <div className='ship-info'>
+    <div className='ship-info'>    
       <div className='ship'>
+        { 
+          shipSunk && <img src={hitLargeImg} border='0' alt='Ship sunk' className='sunk-cross' /> 
+        }
         <img src={img} border='0' alt={ship.name} />
       </div>
       <div className='hits'>
