@@ -52,7 +52,7 @@ function App() {
         </div>
         <div className='ship-info-container'>
           {ships.map((ship) => {
-            return <Ship key={ship.name} ship={ship} />;
+            return <Ship key={ship.id} ship={ship} />;
           })}
         </div>
       </div>

@@ -31,7 +31,7 @@ export const gameSlice = createSlice({
     },
     incrementShipHits: (state, action) => {
       state.ships = state.ships.map((ship) => {
-        if (ship.name === action.payload) {
+        if (ship.id === action.payload.ship.id) {
           return {
             ...ship,
             hits: ship.hits + 1,

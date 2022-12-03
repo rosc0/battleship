@@ -28,7 +28,7 @@ export const checkStrikeAttempt = (x, y, placedShips) => {
       const checkCoord = JSON.stringify(position);
       if (coordString === checkCoord) {
         hitIndex = index;
-        hitShip = ship.name;
+        hitShip = ship;
       }
     });
   });
@@ -167,7 +167,7 @@ export const placeShips = () => {
     }    
     
     return {
-      name: ship.name,
+      ship: ship,
       positions: fittedShip.positions,
     }
   }
