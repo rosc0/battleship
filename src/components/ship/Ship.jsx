@@ -15,7 +15,7 @@ const Ship = ({ ship }) => {
           <img
             src={hitLargeImg}
             border='0'
-            alt='Ship sunk'
+            alt={`${ship.name} is sunk`}
             className='sunk-cross'
           />
         )}

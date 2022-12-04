@@ -5,10 +5,16 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
+  
+
+  @include breakpoint(md) {
+    padding-left: 10px;
+  }
 
   @include breakpoint(lg) {
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: center;
+    padding-left: 0;
   }
 }

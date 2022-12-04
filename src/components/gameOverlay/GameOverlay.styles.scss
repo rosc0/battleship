@@ -15,14 +15,18 @@
   align-items: center;
 
   div {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     color: white;
+
+    @include breakpoint(sm) {
+      font-size: 2rem;
+    }
   }
 
   button {
-    padding: 25px 50px;
+    padding: 15px 30px;
     border-radius: 7px;
     outline: none;
     border: none;
@@ -30,5 +34,10 @@
     font-weight: bold;
     background-color: $player1Color;
     color: $textColor;
+
+    @include breakpoint(sm) {
+      padding: 25px 50px;
+      font-size: 1.5rem;
+    }
   }
 }
