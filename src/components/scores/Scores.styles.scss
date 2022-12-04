@@ -44,10 +44,6 @@
       white-space: nowrap;
 
       @include breakpoint(sm) {
-        
-      }
-
-      @include breakpoint(sm) {
         font-size: 1.3rem;
         margin-bottom: 5px;
       }
