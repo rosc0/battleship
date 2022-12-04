@@ -1,3 +1,5 @@
+// only allowed ships names are carrier, battleship, cruiser, submarine, destroyer
+// all need a unique id
 export const SHIPS_ARRAY = [
   { id: 'carrier1', name: 'carrier', size: 5 },
   { id: 'battleship1', name: 'battleship', size: 4 },
