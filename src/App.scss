@@ -1,15 +1,16 @@
+@use './styles/variables' as *;
 @use './styles/mixins' as *;
 
 .app-container {
   width: 100%;
   min-width: 320px;
-  margin: 0 auto 20px auto;
+  margin: 0 auto $appContainerMargin auto;
   display: flex;
   flex-direction: column-reverse;
   justify-content: center;
 
   @include breakpoint(md) {
-    margin-top: 20px;
+    margin-top: $appContainerMargin;
     width: 80%;
   }
 
@@ -26,7 +27,7 @@
     width: 65%;
     margin-left: 20px;
     align-self: start;
-    max-width: 100vh;
+    max-width: calc(100vh - ($appContainerMargin * 2));
   }
 }
 
