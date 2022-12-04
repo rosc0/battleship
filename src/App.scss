@@ -27,6 +27,7 @@
     width: 65%;
     margin-left: 20px;
     align-self: start;
+    min-width: 45%;
     max-width: calc(100vh - ($appContainerMargin * 2));
   }
 }
