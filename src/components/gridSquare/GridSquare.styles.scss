@@ -2,7 +2,22 @@
 @use '../../styles/mixins' as *;
 
 .grid-square {
-  aspect-ratio: 1/1;
+  aspect-ratio: 1 / 1;
+
+  // aspect-ratio fallback where not supported
+  @supports not (aspect-ratio: 1 / 1) {
+    &::before {
+      float: left;
+      padding-top: 100%;
+      content: "";
+    }
+    &::after {
+      display: block;
+      content: "";
+      clear: both;
+    }
+  }
+
   display: flex;
   align-items: center;
   justify-content: center;
