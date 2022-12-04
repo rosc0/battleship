@@ -38,12 +38,18 @@
     .player-name {
       border-top: 1px solid $textColor;
       margin-top: 5px;
+      margin-bottom: 10px;
       padding-top: 7px;
-      font-size: 0.80rem;
+      font-size: 1rem;
       white-space: nowrap;
 
       @include breakpoint(sm) {
-        font-size: 1.2rem;
+        
+      }
+
+      @include breakpoint(sm) {
+        font-size: 1.3rem;
+        margin-bottom: 5px;
       }
     }
   }
